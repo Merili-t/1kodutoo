@@ -1,0 +1,219 @@
+body {
+    background-color: #89a4ddce;
+  }
+
+  .page {
+    width: 80%;
+    max-width: 960px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #89a4ddces;
+    border-radius: 5px;
+  }
+  
+  body {
+    font: 14px/26px 'Bungee', Helvetica, Arial, sans-serif;
+    color: #222;
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+  }
+
+  header{
+    font-size: 24px;
+    line-height: 48px;
+  }
+
+  h4 {
+    font-size: 21px;
+    font-family: 'Bungee', cursive;
+  }
+
+  h4 #clock {
+    font-size: 36px;
+    display: block;
+    padding: 5px 0px;
+  }
+
+  h1, h2, h3, h6 {
+    font-family: 'Bungee Shade', cursive;
+  }
+  
+  #lolcatImage {
+    max-width:30em
+  }
+  
+  blockquote {
+    font: 2em/1em 'Open Sans', sans-serif;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 2px 2px #000;
+    margin: -80px 0 100px 0;
+    color: #fff;
+  }
+  
+  blockquote:before { content: '"'; }
+  blockquote:after { content: '"'; }
+  
+  #lolcat {
+    margin: 0 auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 10px;
+    border:10px solid #222;
+  }
+  #wakeUpTimeSelector, #lunchTimeSelector, #napTimeSelector {
+    padding: 10px 0;
+  }
+  #partyTimeButton {
+    background-color: #222;
+    width: 300px;
+    font-family: 'Bungee', cursive;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-top: 20px;
+  }
+  
+  footer p {
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  #confettiContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  /* Konfeti tüki stiil */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  border-radius: 0;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 20px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Üldised stiilid konteineri ja nuppude jaoks */
+.time-selector-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.save-button {
+  margin-left: 10px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #333;
+}
+
+/* Efektide konteinerid */
+.effect-container {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 900;
+}
+
+/* Päikesetõusu efekt */
+#sunriseContainer {
+  bottom: -150px;
+  overflow: hidden;
+}
+
+.sun {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #ffdd00 30%, #ff8800);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  box-shadow: 0 0 50px #ff8800, 0 0 100px #ffdd00;
+  animation: sunrise 3s ease-out forwards;
+}
+
+@keyframes sunrise {
+  from {
+    bottom: -100px;
+    opacity: 0.3;
+  }
+  to {
+    bottom: 70%;
+    opacity: 1;
+  }
+}
+
+/* Lõunasöögi efekti stiilid */
+.utensil {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0;
+  animation: floatout 3s ease-out forwards;
+}
+
+@keyframes floatIn {
+  0% {
+    transform: translateY(100px) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+/* Une Z-de efekti stiilid */
+.sleep-z {
+  position: absolute;
+  color: #6b8cff;
+  font-weight: bold;
+  font-family: Comic Sans MS, cursive;
+  opacity: 0;
+  animation: floatUp 3s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) translateX(100px) rotate(10deg);
+    opacity: 0;
+  }
+}
