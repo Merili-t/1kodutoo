@@ -1,6 +1,6 @@
 
 body {
-    background-color: #89a4ddce;
+    background-color: #b49b9bce;
 }
 
   .page {
@@ -39,9 +39,16 @@ body {
     font-family: 'Bungee Shade', cursive;
   }
   
-  #wakeUpTimeSelector, #lunchTimeSelector, #napTimeSelector {
-    padding: 10px 0;
-  }
+a {
+    text-decoration: none;
+    color:#000;
+}
+
+a:hover {
+    color: #3a3b50;
+}
+
+  
   #partyTimeButton {
     background-color: #222;
     width: 300px;
@@ -92,20 +99,22 @@ body {
 
 /* Üldised stiilid konteineri ja nuppude jaoks */
 .time-selector-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding: 10px;
+    border-radius: 2px;
 }
 
 .save-button {
-  margin-left: 10px;
-  background-color: #000;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  padding: 4px 8px;
-  font-size: 12px;
-  cursor: pointer;
+    margin: 5px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 50px; /* Suurem väärtus muudab nupu ümaraks */
+    padding: 10px 20px; /* Suurem padding muudab nupu ilusamaks */
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .save-button:hover {
@@ -183,3 +192,32 @@ body {
     opacity: 0;
   }
 }
+
+#moon-phase {
+    font-size: 5em; /* Suurenda emoji suurust */
+    margin-bottom: 10px;
+}
+
+.phase-info {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Koodi lõik on küsitud chatGPT käest, et eemaldada valiku juurest need sinised nooled*/
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #171717;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #5c3d2e;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+

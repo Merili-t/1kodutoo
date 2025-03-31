@@ -84,7 +84,10 @@ function updateClock() {
       
       // Save time
       wakeuptime = wakeUpTimeSelector.value;
-      
+    
+      // Save to local storage
+      sessionStorage.setItem("wakeuptime", wakeuptime);
+
       // Clear container
       sunriseContainer.innerHTML = '';
       
@@ -100,7 +103,6 @@ function updateClock() {
     });
   
     // Lunch Time effect
-   
    saveLunchButton.addEventListener("click", function() {
     // Get lunch time selector
     const lunchTimeSelector = document.getElementById("lunchTimeSelector");
@@ -108,6 +110,9 @@ function updateClock() {
     // Save time
     lunchtime = lunchTimeSelector.value;
     
+    // Save to local storage
+    sessionStorage.setItem("lunchtime", lunchtime);
+
     // Clear container
     lunchContainer.innerHTML = '';
     
@@ -156,6 +161,9 @@ function updateClock() {
       // Save time
       naptime = napTimeSelector.value;
       
+      // Save to local storage
+      sessionStorage.setItem("napTime", naptime);
+
       // Clear container
       napContainer.innerHTML = '';
       
@@ -247,7 +255,32 @@ function updateClock() {
   
     const dateDisplay = document.getElementById('date');
     dateDisplay.textContent = `${day}/${month}/${year}`;
-  }
+  
+    // Lisame kuulamise Space klahvi jaoks
+    document.addEventListener('keydown', function(event) {
+        if (event.key === ' ') {
+            // Kui Space klahv vajutatakse, vahetame kuupäeva värvi
+            changeDateColor(dateDisplay);
+        }
+    });
+}
+
+// Funktsioon kuupäeva värvi vahetamiseks
+function changeDateColor(dateElement) {
+    // Funktsioon juhusliku heksadesimaalse värvi loomiseks
+    const randomColor = getRandomColor();
+    dateElement.style.color = randomColor;
+}
+
+// Funktsioon juhusliku heksadesimaalse värvi loomiseks
+function getRandomColor() {
+    const randomHex = Math.floor(Math.random() * 16777215).toString(16); // 16777215 on 0xFFFFFF ehk maksimaalne heksadesimaalne väärtus
+    return `#${randomHex.padStart(6, '0')}`; // PadStart tagab, et värv oleks alati kuuehoolikuline
+}
+
+// Kutsu dateDisplay funktsioon üles lehe laadimisel
+document.addEventListener('DOMContentLoaded', dateDisplay);
+
   
   function showGreeting() {
     const now = new Date();
@@ -255,20 +288,17 @@ function updateClock() {
     let greeting;
   
     if (hours < 12) {
-      greeting = "Good Morning!";
+      greeting = "Tere hommikust!";
     } else if (hours < 18) {
-      greeting = "Good Afternoon!";
+      greeting = "Tere päevast!";
     } else {
-      greeting = "Good Evening!";
+      greeting = "Tere õhtust!";
     }
   
     const greetingDisplay = document.getElementById('greeting');
     greetingDisplay.textContent = greeting;
   }
   
-  // Start the clock when the document is ready
-  document.addEventListener('DOMContentLoaded', startClock);
-
 
   document.addEventListener('DOMContentLoaded', function() {
     const clockDisplay = document.getElementById('clock');
@@ -284,16 +314,58 @@ function updateClock() {
   function updateDay() {
     const now = new Date();
     const weekDays = ['Esmaspäev', 'Teisipäev', 'Kolmapäev', 'Neljapäev', 'Reede', 'Laupäev', 'Pühapäev'];
-    const dayIndex = (now.getDay() + 6) % 7; 
-    const day = weekDays[dayIndex];
+    let dayIndex = (now.getDay() + 6) % 7; // Algab esmaspäevast
     const dayDisplay = document.getElementById('weekday');
-    dayDisplay.textContent = day;
-  }
+    
+    // Algne positsioon (top, left)
+    let position = { top: 280, left: 660 };
+
+    // Funktsioon, et kuvada päeva ja uuendada positsiooni
+    const updateDisplayedDay = () => {
+        dayDisplay.textContent = weekDays[dayIndex];
+        dayDisplay.style.position = 'absolute'; // Täiendav positsioneerimine
+        dayDisplay.style.top = `${position.top}px`;
+        dayDisplay.style.left = `${position.left}px`;
+    };
+
+    // Nooleklahvide kuulamine päeva liikumiseks
+    document.addEventListener('keydown', function(event) {
+        const moveDistance = 10; // Liikumisvahemaa väärtus (piksleid)
+
+        if (event.key === 'ArrowUp') {
+            // Liigub üles
+            position.top -= moveDistance;
+        } else if (event.key === 'ArrowDown') {
+            // Liigub alla
+            position.top += moveDistance;
+        } else if (event.key === 'ArrowLeft') {
+            // Liigub vasakule
+            position.left -= moveDistance;
+        } else if (event.key === 'ArrowRight') {
+            // Liigub paremale
+            position.left += moveDistance;
+        }
+        
+        // Uuenda päeva kuvamine ja positsioon
+        updateDisplayedDay();
+    });
+
+    // Algne kuvatava päeva määramine
+    updateDisplayedDay();
+}
+
+// Kutsu funktsioon üles lehe laadimisel
+document.addEventListener('DOMContentLoaded', updateDay);
+
   
   document.addEventListener('DOMContentLoaded', function() {
     updateDay();
     setInterval(updateDay, 60000);
   });
-  
-  
+
+
+  // Start the clock when the document is ready
+  document.addEventListener('DOMContentLoaded', startClock);
+
+
   
