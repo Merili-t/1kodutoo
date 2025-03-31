@@ -17,7 +17,7 @@ function updateClock() {
     
     // Display time on the webpage
     const clockDisplay = document.getElementById('clock');
-    const clockTime = `${hours}:${minutes}:${seconds} ${meridian}!`;
+    const clockTime = `${hours}:${minutes}:${seconds} ${meridian}`;
     clockDisplay.textContent = clockTime;
   }
   
@@ -49,13 +49,13 @@ function updateClock() {
     var partyEvent = function() {
       if (partytime < 0) {
         partytime = new Date().getHours();
+        partyButton.innerText = "Party Time!";
+        partyButton.style.backgroundColor = "#222";
+      } else {
+        partytime = -1;
         partyButton.innerText = "Party Over!";
         partyButton.style.backgroundColor = "#0A8DAB";
         createConfetti(150);
-      } else {
-        partytime = -1;
-        partyButton.innerText = "Party Time!";
-        partyButton.style.backgroundColor = "#222";
       }
     };
     
@@ -96,93 +96,101 @@ function updateClock() {
       // Remove effect after animation ends
       setTimeout(function() {
         sunriseContainer.innerHTML = '';
-      }, 3500);
+      }, 5000);
     });
   
     // Lunch Time effect
-    saveLunchButton.addEventListener("click", function() {
-      // Get lunch time selector
-      const lunchTimeSelector = document.getElementById("lunchTimeSelector");
+   
+   saveLunchButton.addEventListener("click", function() {
+    // Get lunch time selector
+    const lunchTimeSelector = document.getElementById("lunchTimeSelector");
+    
+    // Save time
+    lunchtime = lunchTimeSelector.value;
+    
+    // Clear container
+    lunchContainer.innerHTML = '';
+    
+    // Lunchtime utensils and food icons
+    const foodItems = ['🍴', '🥄', '🍽️', '🥢', '🍕', '🍔', '☕', '🍱', '🍲', '🥗', '🍜', '🍝', '🍚', '🥪'];
+    
+    // Create multiple food emojis with different sizes and positions
+    for (let i = 0; i < 15; i++) {
+      // Create the element
+      const foodItem = document.createElement('div');
+      foodItem.classList.add('food-item');
+      
+      // Explicitly set styles for visibility
+      foodItem.style.position = 'absolute';
+      foodItem.style.zIndex = '100';
+      
+      // Choose random food emoji
+      foodItem.innerText = foodItems[Math.floor(Math.random() * foodItems.length)];
+      
+      // Place at random position
+      foodItem.style.left = `${Math.random() * 90 + 5}%`;
+      foodItem.style.top = `${Math.random() * 60 + 20}%`;
+      
+      // Apply random sizes
+      const size = Math.random() * 30 + 20;
+      foodItem.style.fontSize = `${size}px`;
+      
+      // Add animation with delay
+      foodItem.style.animationDelay = `${Math.random() * 0.5}s`;
+      
+      // Add to container
+      lunchContainer.appendChild(foodItem);
+    }
+    
+    // Remove effect after animation ends
+    setTimeout(function() {
+      lunchContainer.innerHTML = '';
+    }, 5000);
+  });
+  
+    // Nap Time effect - sleeping Zs
+    saveNapButton.addEventListener("click", function() {
+      // Get nap time selector
+      const napTimeSelector = document.getElementById("napTimeSelector");
       
       // Save time
-      lunchtime = lunchTimeSelector.value;
+      naptime = napTimeSelector.value;
       
       // Clear container
-      lunchContainer.innerHTML = '';
+      napContainer.innerHTML = '';
       
-      // Lunchtime utensils icons
-      const utensils = ['🍴', '🥄', '🍽️', '🥢', '🍕', '🍔', '☕'];
+      // Sleep elements: Z letters and sleep emojis
+      const sleepElements = ['Z', '💤', '😴', '🛌', '🌙'];
       
-      for (let i = 0; i < 12; i++) {
-        const utensil = document.createElement('div');
-        utensil.classList.add('utensil');
+      // Create multiple Zs and sleep emojis with different sizes
+      for (let i = 0; i < 15; i++) {
+        const sleepZ = document.createElement('div');
+        sleepZ.classList.add('sleep-z');
         
-        // Choose random utensil icon
-        utensil.innerText = utensils[Math.floor(Math.random() * utensils.length)];
+        // Select random sleep element (Z or emoji)
+        sleepZ.innerText = sleepElements[Math.floor(Math.random() * sleepElements.length)];
         
-        // Place at random position
-        utensil.style.left = `${Math.random() * 90 + 5}%`;
-        utensil.style.top = `${Math.random() * 60 + 20}%`;
+        // Random position
+        sleepZ.style.left = `${Math.random() * 90 + 5}%`;
+        sleepZ.style.bottom = `${Math.random() * 60 + 20}%`;
         
-        // Apply random sizes
+        // Random size
         const size = Math.random() * 30 + 20;
-        utensil.style.fontSize = `${size}px`;
+        sleepZ.style.fontSize = `${size}px`;
         
-        // Animation delay
-        utensil.style.animationDelay = `${Math.random() * 0.5}s`;
+        // Delay appearance
+        sleepZ.style.animationDelay = `${Math.random() * 0.5}s`;
         
-        lunchContainer.appendChild(utensil);
+        napContainer.appendChild(sleepZ);
       }
       
       // Remove effect after animation ends
       setTimeout(function() {
-        lunchContainer.innerHTML = '';
+        napContainer.innerHTML = '';
       }, 5000);
     });
+  }
   
-    // Nap Time effect - sleeping Zs
-    saveNapButton.addEventListener("click", function() {
-        // Get nap time selector
-        const napTimeSelector = document.getElementById("napTimeSelector");
-        
-        // Save time
-        naptime = napTimeSelector.value;
-        
-        // Clear container
-        napContainer.innerHTML = '';
-        
-        // Sleep elements: Z letters and sleep emojis
-        const sleepElements = ['Z', '💤', '😴', '🛌', '🌙'];
-        
-        // Create multiple Zs and sleep emojis with different sizes
-        for (let i = 0; i < 15; i++) {
-          const sleepZ = document.createElement('div');
-          sleepZ.classList.add('sleep-z');
-          
-          // Select random sleep element (Z or emoji)
-          sleepZ.innerText = sleepElements[Math.floor(Math.random() * sleepElements.length)];
-          
-          // Random position
-          sleepZ.style.left = `${Math.random() * 90 + 5}%`;
-          sleepZ.style.bottom = `${Math.random() * 60 + 20}%`;
-          
-          // Random size
-          const size = Math.random() * 30 + 20;
-          sleepZ.style.fontSize = `${size}px`;
-          
-          // Delay appearance
-          sleepZ.style.animationDelay = `${Math.random() * 0.5}s`;
-          
-          napContainer.appendChild(sleepZ);
-        }
-        
-        // Remove effect after animation ends
-        setTimeout(function() {
-          napContainer.innerHTML = '';
-        }, 5000);
-      });
-    }
-
   function createConfetti(amount) {
     const confettiContainer = document.getElementById("confettiContainer");
     const confettiColors = [
@@ -260,3 +268,32 @@ function updateClock() {
   
   // Start the clock when the document is ready
   document.addEventListener('DOMContentLoaded', startClock);
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockDisplay = document.getElementById('clock');
+    const fonts = ['Impact', 'Comic Sans MS', 'Copperplate', 'Papyrus', 'Brush Script MT', 'Arial', 'Verdana', 'Courier New', 'Georgia', 'Times New Roman'];
+    let currentFontIndex = 0;
+  
+    clockDisplay.addEventListener('click', function() {
+      currentFontIndex = (currentFontIndex + 1) % fonts.length;
+      clockDisplay.style.fontFamily = fonts[currentFontIndex];
+    });
+  });
+
+  function updateDay() {
+    const now = new Date();
+    const weekDays = ['Esmaspäev', 'Teisipäev', 'Kolmapäev', 'Neljapäev', 'Reede', 'Laupäev', 'Pühapäev'];
+    const dayIndex = (now.getDay() + 6) % 7; 
+    const day = weekDays[dayIndex];
+    const dayDisplay = document.getElementById('weekday');
+    dayDisplay.textContent = day;
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    updateDay();
+    setInterval(updateDay, 60000);
+  });
+  
+  
+  

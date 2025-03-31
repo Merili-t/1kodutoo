@@ -1,13 +1,13 @@
+
 body {
     background-color: #89a4ddce;
-  }
+}
 
   .page {
     width: 80%;
     max-width: 960px;
     margin: 50px auto;
     text-align: center;
-    background-color: #89a4ddces;
     border-radius: 5px;
   }
   
@@ -30,37 +30,15 @@ body {
   }
 
   h4 #clock {
-    font-size: 36px;
+    padding: 50px;
+    font-size: 100px;
     display: block;
-    padding: 5px 0px;
   }
 
   h1, h2, h3, h6 {
     font-family: 'Bungee Shade', cursive;
   }
   
-  #lolcatImage {
-    max-width:30em
-  }
-  
-  blockquote {
-    font: 2em/1em 'Open Sans', sans-serif;
-    -webkit-text-stroke: 1px black;
-    text-shadow: 2px 2px #000;
-    margin: -80px 0 100px 0;
-    color: #fff;
-  }
-  
-  blockquote:before { content: '"'; }
-  blockquote:after { content: '"'; }
-  
-  #lolcat {
-    margin: 0 auto;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 10px;
-    border:10px solid #222;
-  }
   #wakeUpTimeSelector, #lunchTimeSelector, #napTimeSelector {
     padding: 10px 0;
   }
@@ -96,7 +74,6 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #f00;
   border-radius: 0;
   opacity: 0.8;
   animation: fall linear forwards;
@@ -176,22 +153,11 @@ body {
 }
 
 /* Lõunasöögi efekti stiilid */
-.utensil {
+.food-item {
   position: absolute;
   font-size: 24px;
   opacity: 0;
-  animation: floatout 3s ease-out forwards;
-}
-
-@keyframes floatIn {
-  0% {
-    transform: translateY(100px) rotate(0deg);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0) rotate(360deg);
-    opacity: 1;
-  }
+  animation: floatUp 3s ease-out forwards;
 }
 
 /* Une Z-de efekti stiilid */
