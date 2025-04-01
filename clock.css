@@ -1,4 +1,4 @@
-
+/*Küsisin ChatGPT-i käest algse css kujunduse ning siis hakkasin seda enda maitsele vastavalt muutma*/
 body {
     background-color: #b49b9bce;
 }
@@ -97,7 +97,6 @@ a:hover {
   }
 }
 
-/* Üldised stiilid konteineri ja nuppude jaoks */
 .time-selector-container {
     flex-direction: column;
     align-items: center;
@@ -111,8 +110,8 @@ a:hover {
     background-color: #000;
     color: white;
     border: none;
-    border-radius: 50px; /* Suurem väärtus muudab nupu ümaraks */
-    padding: 10px 20px; /* Suurem padding muudab nupu ilusamaks */
+    border-radius: 50px; 
+    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -121,7 +120,6 @@ a:hover {
   background-color: #333;
 }
 
-/* Efektide konteinerid */
 .effect-container {
   position: fixed;
   left: 0;
@@ -131,7 +129,6 @@ a:hover {
   z-index: 900;
 }
 
-/* Päikesetõusu efekt */
 #sunriseContainer {
   bottom: -150px;
   overflow: hidden;
@@ -161,7 +158,6 @@ a:hover {
   }
 }
 
-/* Lõunasöögi efekti stiilid */
 .food-item {
   position: absolute;
   font-size: 24px;
@@ -169,7 +165,6 @@ a:hover {
   animation: floatUp 3s ease-out forwards;
 }
 
-/* Une Z-de efekti stiilid */
 .sleep-z {
   position: absolute;
   color: #6b8cff;
@@ -194,7 +189,7 @@ a:hover {
 }
 
 #moon-phase {
-    font-size: 5em; /* Suurenda emoji suurust */
+    font-size: 5em; 
     margin-bottom: 10px;
 }
 
