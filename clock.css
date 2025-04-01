@@ -1,22 +1,19 @@
-/*Küsisin ChatGPT-i käest algse css kujunduse ning siis hakkasin seda enda maitsele vastavalt muutma*/
+
 body {
     background-color: #b49b9bce;
+    font: 14px/26px 'Bungee', Helvetica, Arial, sans-serif;
+    color: #222;
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
 }
-
+/*Küsisin ChatGPT-i käest algse css kujunduse ning siis hakkasin seda enda maitsele vastavalt muutma*/
   .page {
     width: 80%;
     max-width: 960px;
     margin: 50px auto;
     text-align: center;
     border-radius: 5px;
-  }
-  
-  body {
-    font: 14px/26px 'Bungee', Helvetica, Arial, sans-serif;
-    color: #222;
-    margin: 0px;
-    padding: 0px;
-    text-transform: uppercase;
   }
 
   header{
